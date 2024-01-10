@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct Section {
     
-    var section: [String] = ["Work", "Life"]
-    var item: [[String]] = [["Swift 공식 문서 읽기", "UIKit 공식 문서 읽기"], ["밥 먹기", "고양이 산책시키기", "강아지 산책시키기"]]
+    var sectionTitle: [String] = ["Work", "Life"]
+    var sectionItem: [[String]] = [["Swift 공식 문서 읽기", "UIKit 공식 문서 읽기"], ["밥 먹기", "고양이 산책시키기", "강아지 산책시키기"]]
     
 }

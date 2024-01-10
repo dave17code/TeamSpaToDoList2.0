@@ -60,12 +60,12 @@
 			children = (
 				4E20DF472B4D5F3200B7FFB8 /* AppDelegate.swift */,
 				4E20DF492B4D5F3200B7FFB8 /* SceneDelegate.swift */,
+				4E7DC2BA2B4E3EB300E3C922 /* Model.swift */,
 				4E20DF4B2B4D5F3200B7FFB8 /* ViewController.swift */,
 				4E20DF4D2B4D5F3200B7FFB8 /* Main.storyboard */,
 				4E20DF502B4D5F3300B7FFB8 /* Assets.xcassets */,
 				4E20DF522B4D5F3300B7FFB8 /* LaunchScreen.storyboard */,
 				4E20DF552B4D5F3300B7FFB8 /* Info.plist */,
-				4E7DC2BA2B4E3EB300E3C922 /* Model.swift */,
 			);
 			path = TeamSpaToDoList2;
 			sourceTree = "<group>";
