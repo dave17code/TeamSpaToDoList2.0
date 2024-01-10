@@ -26,6 +26,19 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TuS-tG-9qC" id="zKN-pw-JqJ">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ywb-eD-oxC">
+                                                    <rect key="frame" x="326" y="6.3333333333333321" width="49" height="30.999999999999996"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="31" id="I2T-7h-4Vx"/>
+                                                        <constraint firstAttribute="width" constant="47" id="kat-rA-s2G"/>
+                                                    </constraints>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ywb-eD-oxC" firstAttribute="centerY" secondItem="zKN-pw-JqJ" secondAttribute="centerY" id="9l1-rK-J2f"/>
+                                                <constraint firstAttribute="trailing" secondItem="ywb-eD-oxC" secondAttribute="trailing" constant="20" id="RQT-cl-r6G"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -50,33 +63,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iq-SR-TwH">
-                                        <rect key="frame" x="289" y="4.6666666666666572" width="99" height="35"/>
+                                        <rect key="frame" x="299" y="9" width="84" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="99" id="iAe-Rv-tBc"/>
-                                            <constraint firstAttribute="height" constant="35" id="zou-ez-I64"/>
+                                            <constraint firstAttribute="height" constant="26" id="3k1-QU-5fT"/>
+                                            <constraint firstAttribute="width" constant="84" id="9Dw-dM-9ff"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="섹션">
-                                                    <attributes>
-                                                        <font key="NSFont" size="20" name=".AppleSDGothicNeoI-Regular"/>
-                                                        <font key="NSOriginalFont" metaFont="system" size="20"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="20"/>
-                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="추가">
-                                                    <attributes>
-                                                        <font key="NSFont" size="20" name=".AppleSDGothicNeoI-Regular"/>
-                                                        <font key="NSOriginalFont" metaFont="system" size="20"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="챕터 추가">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="plain" title="챕터 추가">
+                                            <backgroundConfiguration key="background" cornerRadius="8"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                             <color key="baseForegroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -87,10 +86,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Bgk-CI-qF6" firstAttribute="centerX" secondItem="y8Q-7i-PLR" secondAttribute="centerX" id="4MY-AK-gDd"/>
+                                    <constraint firstItem="3iq-SR-TwH" firstAttribute="centerY" secondItem="y8Q-7i-PLR" secondAttribute="centerY" id="5nd-s4-ef3"/>
                                     <constraint firstItem="Bgk-CI-qF6" firstAttribute="centerY" secondItem="y8Q-7i-PLR" secondAttribute="centerY" id="Gdz-3F-L3b"/>
-                                    <constraint firstItem="3iq-SR-TwH" firstAttribute="centerY" secondItem="y8Q-7i-PLR" secondAttribute="centerY" id="YMf-cz-VsV"/>
-                                    <constraint firstAttribute="trailing" secondItem="3iq-SR-TwH" secondAttribute="trailing" constant="5" id="Zp5-55-YbZ"/>
                                     <constraint firstAttribute="height" constant="44" id="tWn-3i-xil"/>
+                                    <constraint firstAttribute="trailing" secondItem="3iq-SR-TwH" secondAttribute="trailing" constant="10" id="tm6-Ca-r2h"/>
                                 </constraints>
                             </view>
                         </subviews>
