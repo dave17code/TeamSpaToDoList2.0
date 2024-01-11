@@ -52,29 +52,49 @@ class ViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
+    
+
 }
 
+
+
 extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        
+        
+    }
     
 }
 
 extension ViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionData.sectionTitle[section]
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return sectionData.sectionTitle[section]
+//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = UIView()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .clear
+        
+        let label = UILabel()
+        label.text = sectionData.sectionTitle[section]
+        label.textColor = .systemPink
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.frame = CGRect(x: 15, y: 0, width: 100, height: 16)
+        label.numberOfLines = 0
+        
+        view.addSubview(label)
         
         let button = UIButton(type: .system)
         button.setTitle("할일 추가", for: .normal)
         button.setTitleColor(UIColor.tintColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.layer.cornerRadius = 8
-        button.frame = CGRect(x: toDoListTableView.frame.width - 93.5, y: 0, width: 84, height: 26)
+        button.frame = CGRect(x: toDoListTableView.frame.width - 93.5, y: 0, width: 84, height: 20)
     
         view.addSubview(button)
 
