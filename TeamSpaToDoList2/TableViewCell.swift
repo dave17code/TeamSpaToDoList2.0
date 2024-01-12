@@ -7,24 +7,51 @@
 
 import UIKit
 
-protocol ButtonTappedDelegate {
-    func cellButtonTapped()
-}
-
-
 class TableViewCell: UITableViewCell {
     
-    weak var delegate: ButtonTappedDelegate?
+    var sectionData: Section = Section()
+    
+    @IBOutlet weak var toDoListTextLbl: UILabel!
+    @IBOutlet weak var toDoListDoneSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+      
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // 추가된 부분
+        toDoListTextLbl.attributedText = nil
+    }
+    
+    @IBAction func toDoListDoneSwitch(_ sender: UISwitch) {
+        print(sender.isOn)
+        if sender.isOn {
+            toDoListTextLbl.attributedText = toDoListTextLbl.text?.strikeThrough()
+        } else {
+            toDoListTextLbl.attributedText = toDoListTextLbl.text?.removestrikeThrough()
+        }
+    }
+}
 
+extension String {
+    
+    func strikeThrough() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
+    
+    func removestrikeThrough() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
 }
