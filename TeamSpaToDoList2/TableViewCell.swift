@@ -24,13 +24,6 @@ class TableViewCell: UITableViewCell {
 
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        // 추가된 부분
-        toDoListTextLbl.attributedText = nil
-    }
-    
     @IBAction func toDoListDoneSwitch(_ sender: UISwitch) {
         print(sender.isOn)
         if sender.isOn {

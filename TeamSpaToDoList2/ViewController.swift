@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         toDoListTableView.sectionHeaderTopPadding = 25
     }
     
-    @IBAction func addSection(_ sender: Any) {
+    @IBAction func addChapterBtn(_ sender: Any) {
         let title = "할일 챕터 추가"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .default)
@@ -39,6 +39,8 @@ class ViewController: UIViewController {
                 print(sectionData.sectionItem.count)
             } else {}
             
+            sectionData.sectionItemDoneSwitchIsOn.append([false])
+            
             toDoListTableView.reloadData()
         }
         
@@ -52,6 +54,13 @@ class ViewController: UIViewController {
         }
         
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func deleteChapterBtn(_ sender: Any) {
+        let view = DeleteChapterModal()
+        view.modalPresentationStyle = .overFullScreen
+        view.modalTransitionStyle = .coverVertical
+        self.present(view, animated: true)
     }
     
     @objc func addToDoListCell(_ sender: UIButton) {
@@ -165,7 +174,6 @@ extension ViewController: UITableViewDataSource {
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
         cell.toDoListTextLbl.text = sectionData.sectionItem[indexPath.section][indexPath.row]
-        
         
         if sectionData.sectionItemDoneSwitchIsOn[indexPath.section][indexPath.row] == true {
             cell.toDoListTextLbl.attributedText = cell.toDoListTextLbl.text?.strikeThrough()

@@ -36,7 +36,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="addSection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hSn-Kp-NEN"/>
+                                                    <action selector="addChapterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fBF-9E-tqq"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNk-6n-QB1">
@@ -52,6 +52,9 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="deleteChapterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbh-tY-1cO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -134,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1978" y="-742"/>
+            <point key="canvasLocation" x="-2195" y="-818"/>
         </scene>
     </scenes>
     <resources>
