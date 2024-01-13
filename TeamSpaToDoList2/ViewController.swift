@@ -23,6 +23,12 @@ class ViewController: UIViewController {
         toDoListTableView.sectionHeaderTopPadding = 25
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        toDoListTableView.reloadData()
+        print(sectionData)
+        print("viewWillAppear")
+    }
+    
     @IBAction func addChapterBtn(_ sender: Any) {
         let title = "할일 챕터 추가"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)

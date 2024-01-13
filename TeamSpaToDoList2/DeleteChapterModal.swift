@@ -7,9 +7,6 @@
 
 import UIKit
 
-public protocol PopUpModalDelegate: AnyObject {
-}
-
 class DeleteChapterModal: UIViewController {
     
     var sectionData: Section = Section()
@@ -23,11 +20,28 @@ class DeleteChapterModal: UIViewController {
         return view
     }()
     
+    private lazy var canvasBottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var chapterTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DeleteChapterModalCell.self, forCellReuseIdentifier: DeleteChapterModalCell.identifier)
         return tableView
+    }()
+    
+    private lazy var completionBtn: UIButton = {
+        let completionBtn = UIButton()
+        completionBtn.translatesAutoresizingMaskIntoConstraints = false
+        completionBtn.setTitle("완료", for: .normal)
+        completionBtn.setTitleColor(.white, for: .normal)
+        completionBtn.layer.cornerRadius = 8
+        completionBtn.backgroundColor = .systemGreen
+        return completionBtn
     }()
 
     override func viewDidLoad() {
@@ -38,26 +52,58 @@ class DeleteChapterModal: UIViewController {
             self.canvas.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.canvas.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             self.canvas.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.7),
-            self.canvas.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.45),
+            self.canvas.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.35),
         ])
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        self.view.backgroundColor = .clear
+        
+        canvas.addSubview(canvasBottomView)
+        NSLayoutConstraint.activate([
+            canvasBottomView.widthAnchor.constraint(equalTo: canvas.widthAnchor),
+            canvasBottomView.heightAnchor.constraint(equalToConstant: 45),
+            canvasBottomView.bottomAnchor.constraint(equalTo: canvas.bottomAnchor)
+        ])
+        
+        canvasBottomView.addSubview(completionBtn)
+        NSLayoutConstraint.activate([
+            completionBtn.widthAnchor.constraint(equalToConstant: 50),
+            completionBtn.heightAnchor.constraint(equalToConstant: 25),
+            completionBtn.centerXAnchor.constraint(equalTo: canvasBottomView.centerXAnchor),
+            completionBtn.centerYAnchor.constraint(equalTo: canvasBottomView.centerYAnchor)
+        ])
+        completionBtn.addTarget(self, action: #selector(completionBtnInCell(_:)), for: .touchUpInside)
         
         chapterTableView.delegate = self
         chapterTableView.dataSource = self
         chapterTableView.separatorInset = UIEdgeInsets(top: .zero, left: 0, bottom: .zero, right: 0)
         chapterTableView.allowsSelection = false
+        
         canvas.addSubview(chapterTableView)
         NSLayoutConstraint.activate([
             chapterTableView.topAnchor.constraint(equalTo: canvas.topAnchor),
             chapterTableView.leadingAnchor.constraint(equalTo: canvas.leadingAnchor),
             chapterTableView.trailingAnchor.constraint(equalTo: canvas.trailingAnchor),
-            chapterTableView.bottomAnchor.constraint(equalTo: canvas.bottomAnchor)
+            chapterTableView.bottomAnchor.constraint(equalTo: completionBtn.topAnchor, constant: -20)
         ])
     }
     
     @objc func deleteBtnInCell(_ sender: UIButton) {
         print(sender.tag)
         print("deleteBtnClicked")
+        
+        sectionData.sectionTitle.remove(at: sender.tag)
+        sectionData.sectionItem.remove(at: sender.tag)
+        sectionData.sectionItemDoneSwitchIsOn.remove(at: sender.tag)
+        
+        chapterTableView.reloadData()
+        
+        print(sectionData.sectionTitle)
+        print(sectionData.sectionItem)
+        print(sectionData.sectionItemDoneSwitchIsOn)
+    }
+    
+    @objc func completionBtnInCell(_ sender: UIButton) {
+        self.presentingViewController?.viewWillAppear(true)
+        dismiss(animated: true)
     }
 }
 
@@ -80,11 +126,12 @@ extension DeleteChapterModal: UITableViewDataSource {
         deleteBtn.setTitleColor(.white, for: .normal)
         deleteBtn.layer.cornerRadius = 8
         deleteBtn.backgroundColor = .systemPink
-        deleteBtn.tag = indexPath.row
+        deleteBtn.tag = indexPath.section * 1000 + indexPath.row
         deleteBtn.addTarget(self, action: #selector(deleteBtnInCell(_:)), for: .touchUpInside)
         
         cell.label.text = sectionData.sectionTitle[indexPath.row]
         cell.accessoryView = deleteBtn
+        cell.backgroundColor = .systemGray5
 
         return cell
     }
