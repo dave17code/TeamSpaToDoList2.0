@@ -120,9 +120,9 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = UIView()
-        view.backgroundColor = .systemGray6
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+        view.backgroundColor = .systemGray6
+                
         let label = UILabel()
         label.text = sectionData.sectionTitle[section]
         label.textColor = .black
@@ -184,7 +184,7 @@ extension ViewController: UITableViewDataSource {
             print("removeStrikeThrough()")
             cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].removeStrikeThrough()
         }
-        
+                
         return cell
     }
 }
