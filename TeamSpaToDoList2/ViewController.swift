@@ -41,8 +41,6 @@ class ViewController: UIViewController {
                 print(sectionData.sectionItem.count)
             } else {}
             
-            
-            
             sectionData.sectionItemDoneSwitchIsOn.append([false])
             emptyToDoList.isHidden = true
             toDoListTableView.reloadData()
@@ -69,9 +67,6 @@ class ViewController: UIViewController {
     }
     
     @objc func addToDoListCell(_ sender: UIButton) {
-        print("add")
-        print(sender.tag)
-        
         let title = "할일 추가"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .default)
@@ -99,18 +94,12 @@ class ViewController: UIViewController {
     @objc func doneSwitchIsOn(_ sender: UISwitch) {
         let section = sender.tag / 1000
         let row = sender.tag % 1000
-        
         print(section)
         print(row)
         
         sectionData.sectionItemDoneSwitchIsOn[section][row] = sender.isOn
-        
-        
         print(sectionData.sectionItemDoneSwitchIsOn[section][row])
-        
-        
-//        print(sectionData.sectionItemDoneSwitchIsOn)
-        
+
         toDoListTableView.reloadData()
     }
 }
@@ -165,15 +154,12 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let completion = UIContextualAction(style: .normal, title: "삭제") { [self] (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            
             sectionData.sectionItem[indexPath.section].remove(at: indexPath.row)
             sectionData.sectionItemDoneSwitchIsOn[indexPath.section].remove(at: indexPath.row)
-            
             toDoListTableView.reloadData()
         }
-        
         completion.backgroundColor = .systemPink
-        
+    
         let config = UISwipeActionsConfiguration(actions:[completion])
         config.performsFirstActionWithFullSwipe = false
         
@@ -182,7 +168,7 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.selectionStyle = .none
 
         let doneSwitch = UISwitch()
@@ -198,7 +184,7 @@ extension ViewController: UITableViewDataSource {
             print("removeStrikeThrough()")
             cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].removeStrikeThrough()
         }
-
+        
         return cell
     }
 }

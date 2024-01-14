@@ -107,8 +107,10 @@ class DeleteChapterModal: UIViewController {
         guard let vc = preVC as? ViewController else { return }
         vc.sectionData = self.sectionData
         vc.toDoListTableView.reloadData()
-        vc.emptyToDoList.isHidden = false
         
+        if vc.sectionData.sectionTitle.isEmpty {
+            vc.emptyToDoList.isHidden = false
+        }
         self.presentingViewController?.dismiss(animated: true)
     }
 }

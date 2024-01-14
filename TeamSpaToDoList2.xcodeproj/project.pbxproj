@@ -16,7 +16,6 @@
 		4E3E9BC72B52312300F2155A /* DeleteChapterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E9BC62B52312300F2155A /* DeleteChapterModal.swift */; };
 		4E3E9BC92B523E5F00F2155A /* DeleteChapterModalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E9BC82B523E5F00F2155A /* DeleteChapterModalCell.swift */; };
 		4E7DC2BB2B4E3EB300E3C922 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DC2BA2B4E3EB300E3C922 /* Model.swift */; };
-		4E7DC2BF2B4F9FAE00E3C922 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7DC2BE2B4F9FAE00E3C922 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		4E3E9BC62B52312300F2155A /* DeleteChapterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChapterModal.swift; sourceTree = "<group>"; };
 		4E3E9BC82B523E5F00F2155A /* DeleteChapterModalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChapterModalCell.swift; sourceTree = "<group>"; };
 		4E7DC2BA2B4E3EB300E3C922 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		4E7DC2BE2B4F9FAE00E3C922 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +66,6 @@
 				4E20DF492B4D5F3200B7FFB8 /* SceneDelegate.swift */,
 				4E7DC2BA2B4E3EB300E3C922 /* Model.swift */,
 				4E20DF4B2B4D5F3200B7FFB8 /* ViewController.swift */,
-				4E7DC2BE2B4F9FAE00E3C922 /* TableViewCell.swift */,
 				4E3E9BC62B52312300F2155A /* DeleteChapterModal.swift */,
 				4E3E9BC82B523E5F00F2155A /* DeleteChapterModalCell.swift */,
 				4E20DF4D2B4D5F3200B7FFB8 /* Main.storyboard */,
@@ -150,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E7DC2BF2B4F9FAE00E3C922 /* TableViewCell.swift in Sources */,
 				4E20DF4C2B4D5F3200B7FFB8 /* ViewController.swift in Sources */,
 				4E3E9BC92B523E5F00F2155A /* DeleteChapterModalCell.swift in Sources */,
 				4E20DF482B4D5F3200B7FFB8 /* AppDelegate.swift in Sources */,
