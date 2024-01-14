@@ -102,8 +102,14 @@ class DeleteChapterModal: UIViewController {
     }
     
     @objc func completionBtnInCell(_ sender: UIButton) {
-        self.presentingViewController?.viewWillAppear(true)
-        dismiss(animated: true)
+        let preVC = self.presentingViewController
+        
+        guard let vc = preVC as? ViewController else { return }
+        vc.sectionData = self.sectionData
+        vc.toDoListTableView.reloadData()
+        vc.emptyToDoList.isHidden = false
+        
+        self.presentingViewController?.dismiss(animated: true)
     }
 }
 

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var toDoListTableView: UITableView!
+    @IBOutlet weak var emptyToDoList: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,7 @@ class ViewController: UIViewController {
         toDoListTableView.delegate = self
         toDoListTableView.dataSource = self
         toDoListTableView.sectionHeaderTopPadding = 25
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        toDoListTableView.reloadData()
-        print(sectionData)
-        print("viewWillAppear")
+        emptyToDoList.isHidden = true
     }
     
     @IBAction func addChapterBtn(_ sender: Any) {
@@ -45,8 +41,10 @@ class ViewController: UIViewController {
                 print(sectionData.sectionItem.count)
             } else {}
             
-            sectionData.sectionItemDoneSwitchIsOn.append([false])
             
+            
+            sectionData.sectionItemDoneSwitchIsOn.append([false])
+            emptyToDoList.isHidden = true
             toDoListTableView.reloadData()
         }
         
@@ -66,6 +64,7 @@ class ViewController: UIViewController {
         let view = DeleteChapterModal()
         view.modalPresentationStyle = .overFullScreen
         view.modalTransitionStyle = .coverVertical
+        view.sectionData = self.sectionData
         self.present(view, animated: true)
     }
     
@@ -103,9 +102,15 @@ class ViewController: UIViewController {
         
         print(section)
         print(row)
-        print(sender.isOn)
         
         sectionData.sectionItemDoneSwitchIsOn[section][row] = sender.isOn
+        
+        
+        print(sectionData.sectionItemDoneSwitchIsOn[section][row])
+        
+        
+//        print(sectionData.sectionItemDoneSwitchIsOn)
+        
         toDoListTableView.reloadData()
     }
 }
@@ -178,23 +183,37 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        
-        cell.toDoListTextLbl.text = sectionData.sectionItem[indexPath.section][indexPath.row]
-        
-        if sectionData.sectionItemDoneSwitchIsOn[indexPath.section][indexPath.row] == true {
-            cell.toDoListTextLbl.attributedText = cell.toDoListTextLbl.text?.strikeThrough()
-        } else {
-            cell.toDoListTextLbl.attributedText = cell.toDoListTextLbl.text?.removestrikeThrough()
-        }
-        
         cell.selectionStyle = .none
-        
+
         let doneSwitch = UISwitch()
         doneSwitch.isOn = sectionData.sectionItemDoneSwitchIsOn[indexPath.section][indexPath.row]
         doneSwitch.tag = indexPath.section * 1000 + indexPath.row
         doneSwitch.addTarget(self, action: #selector(doneSwitchIsOn(_:)), for: .valueChanged)
         cell.accessoryView = doneSwitch
+        
+        if sectionData.sectionItemDoneSwitchIsOn[indexPath.section][indexPath.row] == true {
+            print("strikeThrough()")
+            cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].strikeThrough()
+        } else {
+            print("removeStrikeThrough()")
+            cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].removeStrikeThrough()
+        }
 
         return cell
+    }
+}
+
+extension String {
+    
+    func strikeThrough() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
+    
+    func removeStrikeThrough() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
+        return attributeString
     }
 }

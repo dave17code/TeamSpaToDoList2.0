@@ -93,25 +93,37 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FYp-Yv-wF0" id="Yn6-2I-sKW">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0o-Zz-fpl">
-                                                    <rect key="frame" x="15.000000000000004" y="11.666666666666666" width="41.333333333333343" height="20.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="i0o-Zz-fpl" firstAttribute="leading" secondItem="Yn6-2I-sKW" secondAttribute="leading" constant="15" id="7aI-Xu-gxk"/>
-                                                <constraint firstItem="i0o-Zz-fpl" firstAttribute="centerY" secondItem="Yn6-2I-sKW" secondAttribute="centerY" id="EKw-M9-mkd"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="toDoListTextLbl" destination="i0o-Zz-fpl" id="ISA-oW-bcn"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glM-im-rbU">
+                                <rect key="frame" x="0.0" y="310" width="393" height="508"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Gkk-2v-QWN">
+                                        <rect key="frame" x="109.66666666666667" y="225.66666666666663" width="173.66666666666663" height="57"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="챕터 추가로" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idb-3j-XN0">
+                                                <rect key="frame" x="0.0" y="0.0" width="173.66666666666666" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="할일 목록을 생성하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvn-nm-9gb">
+                                                <rect key="frame" x="0.0" y="34" width="173.66666666666666" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Gkk-2v-QWN" firstAttribute="centerY" secondItem="glM-im-rbU" secondAttribute="centerY" id="4yE-Cw-Rjk"/>
+                                    <constraint firstItem="Gkk-2v-QWN" firstAttribute="centerX" secondItem="glM-im-rbU" secondAttribute="centerX" id="vem-R5-I5q"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -122,22 +134,27 @@
                             <constraint firstItem="shn-k4-0WT" firstAttribute="top" secondItem="jye-1e-7Y5" secondAttribute="bottom" id="9os-W7-LQH"/>
                             <constraint firstItem="shn-k4-0WT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GGB-yt-95R"/>
                             <constraint firstItem="shn-k4-0WT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="KYY-hA-cuq"/>
+                            <constraint firstItem="glM-im-rbU" firstAttribute="top" secondItem="rmE-Yl-i5a" secondAttribute="bottom" id="OB7-vc-E6M"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="glM-im-rbU" secondAttribute="trailing" id="QK9-tA-FIc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="glM-im-rbU" secondAttribute="bottom" id="WpE-1s-YE5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ved-c1-6Jb" secondAttribute="bottom" id="Xao-B2-Fug"/>
                             <constraint firstItem="rmE-Yl-i5a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xc6-NZ-wae"/>
                             <constraint firstItem="jye-1e-7Y5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cbl-Sf-ImI"/>
                             <constraint firstItem="Ved-c1-6Jb" firstAttribute="top" secondItem="rmE-Yl-i5a" secondAttribute="bottom" id="mA9-av-DLc"/>
                             <constraint firstItem="Ved-c1-6Jb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n3t-pO-tzn"/>
+                            <constraint firstItem="glM-im-rbU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qwF-hj-GFB"/>
                             <constraint firstItem="Ved-c1-6Jb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yOR-bP-pP9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyToDoList" destination="glM-im-rbU" id="7KQ-Yg-C0W"/>
                         <outlet property="logoImageView" destination="jye-1e-7Y5" id="GaL-Qg-TW0"/>
                         <outlet property="toDoListTableView" destination="Ved-c1-6Jb" id="nmc-F7-gMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2195" y="-818"/>
+            <point key="canvasLocation" x="-2629.770992366412" y="-863.38028169014092"/>
         </scene>
     </scenes>
     <resources>
