@@ -34,12 +34,12 @@ class ViewController: UIViewController {
             if let text = alert.textFields?[0].text {
                 sectionData.sectionTitle.append(text)
                 print(sectionData.sectionItem.count)
-            } else {}
+            }
             
             if let text = alert.textFields?[1].text {
                 sectionData.sectionItem.append([text])
                 print(sectionData.sectionItem.count)
-            } else {}
+            }
             
             sectionData.sectionItemDoneSwitchIsOn.append([false])
             emptyToDoList.isHidden = true
@@ -178,19 +178,16 @@ extension ViewController: UITableViewDataSource {
         cell.accessoryView = doneSwitch
         
         if sectionData.sectionItemDoneSwitchIsOn[indexPath.section][indexPath.row] == true {
-            print("strikeThrough()")
             cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].strikeThrough()
         } else {
-            print("removeStrikeThrough()")
             cell.textLabel?.attributedText = sectionData.sectionItem[indexPath.section][indexPath.row].removeStrikeThrough()
         }
-                
+        
         return cell
     }
 }
 
 extension String {
-    
     func strikeThrough() -> NSAttributedString {
         let attributeString = NSMutableAttributedString(string: self)
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributeString.length))

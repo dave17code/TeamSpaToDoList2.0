@@ -72,7 +72,7 @@ class DeleteChapterModal: UIViewController {
         ])
         completionBtn.addTarget(self, action: #selector(completionBtnInCell(_:)), for: .touchUpInside)
         
-        chapterTableView.delegate = self
+//        chapterTableView.delegate = self
         chapterTableView.dataSource = self
         chapterTableView.separatorInset = UIEdgeInsets(top: .zero, left: 0, bottom: .zero, right: 0)
         chapterTableView.allowsSelection = false
@@ -113,10 +113,6 @@ class DeleteChapterModal: UIViewController {
         }
         self.presentingViewController?.dismiss(animated: true)
     }
-}
-
-extension DeleteChapterModal: UITableViewDelegate {
-    
 }
 
 extension DeleteChapterModal: UITableViewDataSource {
