@@ -99,10 +99,9 @@ class ViewController: UIViewController {
         print(section)
         print(row)
         
+        let indexPath = IndexPath(row: row, section: section)
         sectionData.sectionItemDoneSwitchIsOn[section][row] = sender.isOn
-        print(sectionData.sectionItemDoneSwitchIsOn[section][row])
-
-        toDoListTableView.reloadData()
+        toDoListTableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 
