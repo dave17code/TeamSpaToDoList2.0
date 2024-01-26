@@ -19,9 +19,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         logoImageView.image = UIImage(named: "TeamSpaLogo")
+        
         toDoListTableView.delegate = self
         toDoListTableView.dataSource = self
         toDoListTableView.sectionHeaderTopPadding = 25
+        
         emptyToDoList.isHidden = true
     }
     
